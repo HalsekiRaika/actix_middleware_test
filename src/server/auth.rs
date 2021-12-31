@@ -42,6 +42,7 @@ impl<S, B> Service<ServiceRequest> for TestMiddlewareProcess<S>
 
     fn call(&self, req: ServiceRequest) -> Self::Future {
         let logger = Rc::new(Logger::new(Some("TestMiddleware")));
+        //let serv = self.service.clone();
 
         // Why is this method firing twice...
         logger.debug("task call from middleware start.");
@@ -52,6 +53,7 @@ impl<S, B> Service<ServiceRequest> for TestMiddlewareProcess<S>
         // Box::pin(async move {
         //     let res = serv.call(req).await?;
         //     println!("headers: {:?}", res.headers());
+        //     // ここにあるメソッドも二度実行された。
         //     logger.debug("cage task call from middleware response");
         //
         //     Ok(res)
