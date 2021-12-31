@@ -42,6 +42,8 @@ impl<S, B> Service<ServiceRequest> for TestMiddlewareProcess<S>
 
     fn call(&self, req: ServiceRequest) -> Self::Future {
         let logger = Rc::new(Logger::new(Some("TestMiddleware")));
+
+        // Why is this method firing twice...
         logger.debug("task call from middleware start.");
 
         // Todo: Write Token Validator Task (2021/12/30 23:54)

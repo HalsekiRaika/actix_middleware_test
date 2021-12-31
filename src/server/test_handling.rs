@@ -5,6 +5,7 @@ pub async fn loop_handler() -> Result<(), Box<dyn std::error::Error>> {
     tokio::spawn(async move {
         logger.info("Starting loop_handling server!");
         loop {
+            // grpcのサーバータスクを実装していた部分をLoopブロックにて置き換え。
             ()
         }
     });
